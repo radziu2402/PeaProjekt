@@ -1,4 +1,4 @@
-package atsp.data;
+package data;
 
 public class Matrix {
     private final int[][] distanceMatrix;

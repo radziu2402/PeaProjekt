@@ -1,6 +1,6 @@
-package atsp.algorithms;
+package algorithms;
 
-import atsp.data.Matrix;
+import data.Matrix;
 
 public interface Algorithm {
     void runAlgorithm(Matrix matrix);

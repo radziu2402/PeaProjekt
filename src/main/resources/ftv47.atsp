@@ -1,5 +1,5 @@
 NAME: ftv47
-TYPE: atsp
+TYPE: menu
 COMMENT: Asymmetric TSP (Fischetti)
 DIMENSION: 48
 EDGE_WEIGHT_TYPE: EXPLICIT

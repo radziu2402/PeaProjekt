@@ -1,11 +1,11 @@
-package atsp;
+package menu;
 
-import atsp.algorithms.Algorithm;
-import atsp.algorithms.BruteForce;
-import atsp.data.Matrix;
-import atsp.data.RandomDataGenerator;
-import atsp.data.DataPrinter;
-import atsp.file.FromFileReader;
+import algorithms.Algorithm;
+import algorithms.BruteForce;
+import data.Matrix;
+import data.RandomDataGenerator;
+import data.DataPrinter;
+import file.FromFileReader;
 
 import java.util.Scanner;
 

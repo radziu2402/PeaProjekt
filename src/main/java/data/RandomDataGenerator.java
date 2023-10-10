@@ -1,4 +1,4 @@
-package atsp.data;
+package data;
 
 import java.util.Random;
 import java.util.Scanner;

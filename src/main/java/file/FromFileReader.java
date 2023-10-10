@@ -1,6 +1,6 @@
-package atsp.file;
+package file;
 
-import atsp.data.Matrix;
+import data.Matrix;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
