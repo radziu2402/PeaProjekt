@@ -20,16 +20,26 @@ public class FromFileReader {
             int numCities = 0;
             int[][] distanceMatrix = null;
 
+            int currentRow = 0;
+            int currentCol = 0;
+
             while ((line = br.readLine()) != null) {
                 if (line.startsWith("DIMENSION")) {
                     numCities = Integer.parseInt(line.split(":")[1].trim());
                     distanceMatrix = new int[numCities][numCities];
                 } else if (line.startsWith("EDGE_WEIGHT_SECTION")) {
-                    for (int i = 0; i < numCities; i++) {
-                        line = br.readLine();
+                    while ((line = br.readLine()) != null) {
                         String[] values = line.trim().split("\\s+");
-                        for (int j = 0; j < numCities; j++) {
-                            distanceMatrix[i][j] = Integer.parseInt(values[j]);
+                        for (String value : values) {
+                            if (currentRow >= numCities) {
+                                break;
+                            }
+                            distanceMatrix[currentRow][currentCol] = Integer.parseInt(value);
+                            currentCol++;
+                            if (currentCol >= numCities) {
+                                currentCol = 0;
+                                currentRow++;
+                            }
                         }
                     }
                     break;
@@ -39,7 +49,7 @@ public class FromFileReader {
             System.out.println("Dane zostały wczytane.");
             return new Matrix(distanceMatrix);
         } catch (IOException e) {
-            System.out.println("Nie udało sie otworzyć pliku!");
+            System.out.println("Nie udało się otworzyć pliku!");
         }
         return null;
     }

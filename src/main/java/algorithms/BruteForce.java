@@ -39,7 +39,7 @@ public class BruteForce implements Algorithm {
         for (int i = 0; i < tour.length - 1; i++) {
             distance += matrix[tour[i]][tour[i + 1]];
         }
-        distance += matrix[tour[tour.length - 1]][tour[0]]; // Return to the starting city
+        distance += matrix[tour[tour.length - 1]][tour[0]];
         return distance;
     }
 
@@ -50,7 +50,7 @@ public class BruteForce implements Algorithm {
         }
 
         if (i < 0) {
-            return false; // No more permutations
+            return false;
         }
 
         int j = array.length - 1;

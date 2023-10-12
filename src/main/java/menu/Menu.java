@@ -16,6 +16,8 @@ public class Menu {
     private final RandomDataGenerator dataGenerator;
     private final DataPrinter dataPrinter;
     private final Scanner scanner;
+    public static long millisActualTime;
+    public static long executionTime;
 
     public Menu() {
         scanner = new Scanner(System.in);
@@ -59,7 +61,12 @@ public class Menu {
                 case 1 -> matrix = fromFileReader.loadFromFile();
                 case 2 -> matrix = dataGenerator.generateData();
                 case 3 -> dataPrinter.displayData(matrix);
-                case 4 -> algorithm.runAlgorithm(matrix);
+                case 4 -> {
+                    millisActualTime = System.currentTimeMillis();
+                    algorithm.runAlgorithm(matrix);
+                    executionTime = System.currentTimeMillis() - millisActualTime;
+                    System.out.println("Czas wykonania: " + executionTime + " ms");
+                }
                 case 5 -> {
                     scanner.close();
                     System.exit(0);

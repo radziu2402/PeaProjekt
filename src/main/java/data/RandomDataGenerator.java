@@ -15,9 +15,9 @@ public class RandomDataGenerator {
         for (int i = 0; i < numCities; i++) {
             for (int j = 0; j < numCities; j++) {
                 if (i == j) {
-                    distanceMatrix[i][j] = 0;
+                    distanceMatrix[i][j] = -1;
                 } else {
-                    distanceMatrix[i][j] = random.nextInt(100) + 1; // Zakres od 1 do 100 dla przykładu
+                    distanceMatrix[i][j] = random.nextInt(100); // Zakres od 1 do 100 dla przykładu
                 }
             }
         }
