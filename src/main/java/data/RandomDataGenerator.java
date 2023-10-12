@@ -17,7 +17,7 @@ public class RandomDataGenerator {
                 if (i == j) {
                     distanceMatrix[i][j] = -1;
                 } else {
-                    distanceMatrix[i][j] = random.nextInt(100); // Zakres od 1 do 100 dla przykładu
+                    distanceMatrix[i][j] = random.nextInt(100) + 1; // Zakres od 1 do 100 dla przykładu
                 }
             }
         }

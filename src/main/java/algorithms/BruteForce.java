@@ -20,8 +20,7 @@ public class BruteForce implements Algorithm {
             }
 
             do {
-                int currentDistance = calculateTourDistance(tour, data);
-
+                int currentDistance = calculateTourDistance(tour, data, minDistance);
                 if (currentDistance < minDistance) {
                     minDistance = currentDistance;
                     bestTour = Arrays.copyOf(tour, numCities);
@@ -33,10 +32,13 @@ public class BruteForce implements Algorithm {
         }
     }
 
-    private int calculateTourDistance(int[] tour, Matrix data) {
+    private int calculateTourDistance(int[] tour, Matrix data, int minDistance) {
         int distance = 0;
         int[][] matrix = data.getDistanceMatrix();
         for (int i = 0; i < tour.length - 1; i++) {
+            if(minDistance<distance){
+                return distance;
+            }
             distance += matrix[tour[i]][tour[i + 1]];
         }
         distance += matrix[tour[tour.length - 1]][tour[0]];
