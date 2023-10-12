@@ -1,4 +1,4 @@
-# Projektowanie Efektywnych ALgorytmów - Projekt
+# Projektowanie Efektywnych Algorytmów - Projekt
 
 Projekt podzielony został na etapy wymagające coraz to większej rozbudowy.
 Etap nr. 1
