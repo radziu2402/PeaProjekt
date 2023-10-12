@@ -1,8 +1,10 @@
 # Projektowanie Efektywnych Algorytmów - Projekt
 
-Projekt podzielony został na etapy wymagające coraz to większej rozbudowy.
+Projekt podzielony został na etapy, o które będzie sukcesywnie rozbudowywany.
+
 Etap nr. 1
 - Brute Force
+
 Program udostępnia następujące opcje:
 1. Wczytanie danych z pliku
 2. Wygenerowanie danych losowych
