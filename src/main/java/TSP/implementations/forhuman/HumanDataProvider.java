@@ -9,10 +9,12 @@ import TSP.file.FromFileReader;
 import java.util.Scanner;
 
 public class HumanDataProvider implements DataProvider {
+    private Matrix matrix = null;
+
     @Override
     public Matrix getData() {
         Scanner scanner = new Scanner(System.in);
-        Matrix matrix = null;
+
         while (true) {
             System.out.println("Menu:");
             System.out.println("1. Wczytaj dane z pliku");
