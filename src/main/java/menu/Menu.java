@@ -1,6 +1,6 @@
 package menu;
 
-import algorithms.AlghorithmResult;
+import algorithms.AlgorithmResult;
 import algorithms.Algorithm;
 import algorithms.BruteForce;
 import data.Matrix;
@@ -66,7 +66,7 @@ public class Menu {
                 case 4 -> {
                     try {
                         millisActualTime = System.currentTimeMillis();
-                        AlghorithmResult result = algorithm.runAlgorithm(matrix);
+                        AlgorithmResult result = algorithm.runAlgorithm(matrix);
                         executionTime = System.currentTimeMillis() - millisActualTime;
                         System.out.println("Najkrótsza trasa: " + Arrays.toString(result.getBestTour()));
                         System.out.println("Długość trasy: " + result.getMinCost());

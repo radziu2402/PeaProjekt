@@ -1,6 +1,6 @@
 package algorithms;
 
-public class AlghorithmResult {
+public class AlgorithmResult {
     /**
      * Array that contains the best possible hamiltonian cycle in graph
      */
@@ -11,7 +11,7 @@ public class AlghorithmResult {
      */
     private final int minCost;
 
-    AlghorithmResult(int[] bestTour, int minCost) {
+    AlgorithmResult(int[] bestTour, int minCost) {
         this.bestTour = bestTour;
         this.minCost = minCost;
     }

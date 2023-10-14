@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class BruteForce implements Algorithm {
 
-    public AlghorithmResult runAlgorithm(Matrix data) throws IncorrectDataException {
+    public AlgorithmResult runAlgorithm(Matrix data) throws IncorrectDataException {
         if (data == null) {
             throw new IncorrectDataException("Najpierw wczytaj lub wygeneruj dane.");
         } else {
@@ -27,7 +27,7 @@ public class BruteForce implements Algorithm {
                 }
             } while (nextPermutation(tour));
 
-            return new AlghorithmResult(bestTour, minDistance);
+            return new AlgorithmResult(bestTour, minDistance);
         }
     }
 
