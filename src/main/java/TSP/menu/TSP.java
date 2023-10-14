@@ -27,12 +27,15 @@ public class TSP {
         Matrix data;
         MeasuredAlghorithmResult result;
         AlgorithmMeasurement algorithmMeasurement = new AlgorithmMeasurement();
-        Algorithm algorithm = algorithmProvider.getAlgorithm();
-        while ((data = dataProvider.getData()) != null && algorithm != null) {
-            try {
-                result = algorithmMeasurement.measureAlgorithm(algorithm, data);
-                reportGenerator.addToReport(result);
-            } catch (Exception ignored) {}
+        Algorithm algorithm;
+        while ((algorithm = algorithmProvider.getAlgorithm()) != null) {
+            while ((data = dataProvider.getData()) != null) {
+                try {
+                    result = algorithmMeasurement.measureAlgorithm(algorithm, data);
+                    reportGenerator.addToReport(result);
+                } catch (Exception ignored) {
+                }
+            }
         }
     }
 }
