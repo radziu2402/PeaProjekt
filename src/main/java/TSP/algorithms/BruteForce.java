@@ -27,8 +27,13 @@ public class BruteForce implements Algorithm {
                 }
             } while (nextPermutation(tour));
 
-            return new AlgorithmResult(numCities, bestTour, minDistance);
+            return new AlgorithmResult(numCities, bestTour, minDistance, getName());
         }
+    }
+
+    @Override
+    public String getName() {
+        return "Przegląd zupełny";
     }
 
     private int calculateTourDistance(int[] tour, Matrix data, int minDistance) {
