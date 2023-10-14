@@ -1,5 +1,6 @@
 package menu;
 
+import algorithms.AlghorithmResult;
 import algorithms.Algorithm;
 import algorithms.BruteForce;
 import data.Matrix;
@@ -7,6 +8,7 @@ import data.RandomDataGenerator;
 import data.DataPrinter;
 import file.FromFileReader;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Menu {
@@ -62,10 +64,16 @@ public class Menu {
                 case 2 -> matrix = dataGenerator.generateData();
                 case 3 -> dataPrinter.displayData(matrix);
                 case 4 -> {
-                    millisActualTime = System.currentTimeMillis();
-                    algorithm.runAlgorithm(matrix);
-                    executionTime = System.currentTimeMillis() - millisActualTime;
-                    System.out.println("Czas wykonania: " + executionTime + " ms");
+                    try {
+                        millisActualTime = System.currentTimeMillis();
+                        AlghorithmResult result = algorithm.runAlgorithm(matrix);
+                        executionTime = System.currentTimeMillis() - millisActualTime;
+                        System.out.println("Najkrótsza trasa: " + Arrays.toString(result.getBestTour()));
+                        System.out.println("Długość trasy: " + result.getMinCost());
+                        System.out.println("Czas wykonania: " + executionTime + " ms");
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
                 case 5 -> {
                     scanner.close();
