@@ -1,6 +1,6 @@
-package file;
+package TSP.file;
 
-import data.Matrix;
+import TSP.data.Matrix;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

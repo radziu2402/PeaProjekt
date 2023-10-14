@@ -1,4 +1,4 @@
-package data;
+package TSP.data;
 
 public class DataPrinter {
     public void displayData(Matrix data) {

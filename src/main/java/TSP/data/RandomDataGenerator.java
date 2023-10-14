@@ -1,4 +1,4 @@
-package data;
+package TSP.data;
 
 import java.util.Random;
 import java.util.Scanner;

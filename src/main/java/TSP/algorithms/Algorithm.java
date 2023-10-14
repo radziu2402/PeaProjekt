@@ -1,6 +1,6 @@
-package algorithms;
+package TSP.algorithms;
 
-import data.Matrix;
+import TSP.data.Matrix;
 
 public interface Algorithm {
     AlgorithmResult runAlgorithm(Matrix matrix) throws IncorrectDataException;

@@ -1,4 +1,4 @@
-package algorithms;
+package TSP.algorithms;
 
 public class AlgorithmResult {
     /**
@@ -11,7 +11,13 @@ public class AlgorithmResult {
      */
     private final int minCost;
 
-    AlgorithmResult(int[] bestTour, int minCost) {
+    /**
+     * Number of vertices that the algorithm ran on.
+     */
+    private final int numberOfVertices;
+
+    AlgorithmResult(int numberOfVertices, int[] bestTour, int minCost) {
+        this.numberOfVertices = numberOfVertices;
         this.bestTour = bestTour;
         this.minCost = minCost;
     }
@@ -22,5 +28,9 @@ public class AlgorithmResult {
 
     public int[] getBestTour() {
         return bestTour;
+    }
+
+    public int getNumberOfVertices() {
+        return numberOfVertices;
     }
 }

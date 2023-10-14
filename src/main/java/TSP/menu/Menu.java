@@ -1,12 +1,13 @@
-package menu;
+package TSP.menu;
 
-import algorithms.AlgorithmResult;
-import algorithms.Algorithm;
-import algorithms.BruteForce;
-import data.Matrix;
-import data.RandomDataGenerator;
-import data.DataPrinter;
-import file.FromFileReader;
+import TSP.measurement.AlgorithmMeasurement;
+import TSP.algorithms.Algorithm;
+import TSP.algorithms.BruteForce;
+import TSP.data.Matrix;
+import TSP.data.RandomDataGenerator;
+import TSP.data.DataPrinter;
+import TSP.file.FromFileReader;
+import TSP.measurement.MeasuredAlghorithmResult;
 
 import java.util.Arrays;
 import java.util.Scanner;

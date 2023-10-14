@@ -1,6 +1,6 @@
-package algorithms;
+package TSP.algorithms;
 
-import data.Matrix;
+import TSP.data.Matrix;
 
 import java.util.Arrays;
 
@@ -27,7 +27,7 @@ public class BruteForce implements Algorithm {
                 }
             } while (nextPermutation(tour));
 
-            return new AlgorithmResult(bestTour, minDistance);
+            return new AlgorithmResult(numCities, bestTour, minDistance);
         }
     }
 

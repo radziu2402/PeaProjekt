@@ -1,4 +1,4 @@
-package data;
+package TSP.data;
 
 public class Matrix {
     private final int[][] distanceMatrix;
