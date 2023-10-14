@@ -8,8 +8,12 @@ public interface ReportGenerator {
     /**
      * Generates report about the ran TSP.algorithms
      *
-     * @param results Results of the run TSP.algorithms
      * @return String version of a report f.e. in HTML or CSV
      */
-    String generateReport(List<MeasuredAlghorithmResult> results);
+    String generateReport();
+
+    /**
+     * @param result Results of the run algorithms
+     */
+    void addToReport(MeasuredAlghorithmResult result);
 }
