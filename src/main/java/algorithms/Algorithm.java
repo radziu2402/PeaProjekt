@@ -3,5 +3,5 @@ package algorithms;
 import data.Matrix;
 
 public interface Algorithm {
-    void runAlgorithm(Matrix matrix);
+    AlghorithmResult runAlgorithm(Matrix matrix) throws IncorrectDataException;
 }

@@ -6,9 +6,9 @@ import java.util.Arrays;
 
 public class BruteForce implements Algorithm {
 
-    public void runAlgorithm(Matrix data) {
+    public AlghorithmResult runAlgorithm(Matrix data) throws IncorrectDataException {
         if (data == null) {
-            System.out.println("Najpierw wczytaj lub wygeneruj dane.");
+            throw new IncorrectDataException("Najpierw wczytaj lub wygeneruj dane.");
         } else {
             int numCities = data.getDistanceMatrix().length;
             int[] bestTour = null;
@@ -27,8 +27,7 @@ public class BruteForce implements Algorithm {
                 }
             } while (nextPermutation(tour));
 
-            System.out.println("Najkrótsza trasa: " + Arrays.toString(bestTour));
-            System.out.println("Długość trasy: " + minDistance);
+            return new AlghorithmResult(bestTour, minDistance);
         }
     }
 
