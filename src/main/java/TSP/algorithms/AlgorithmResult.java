@@ -1,6 +1,8 @@
 package TSP.algorithms;
 
 public class AlgorithmResult {
+    private final String algorithmName;
+
     /**
      * Array that contains the best possible hamiltonian cycle in graph
      */
@@ -16,10 +18,11 @@ public class AlgorithmResult {
      */
     private final int numberOfVertices;
 
-    AlgorithmResult(int numberOfVertices, int[] bestTour, int minCost) {
+    AlgorithmResult(int numberOfVertices, int[] bestTour, int minCost, String algorithmName) {
         this.numberOfVertices = numberOfVertices;
         this.bestTour = bestTour;
         this.minCost = minCost;
+        this.algorithmName = algorithmName;
     }
 
     public int getMinCost() {
@@ -32,5 +35,9 @@ public class AlgorithmResult {
 
     public int getNumberOfVertices() {
         return numberOfVertices;
+    }
+
+    public String getAlgorithmName() {
+        return algorithmName;
     }
 }

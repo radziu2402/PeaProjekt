@@ -26,7 +26,11 @@ public class HumanReadableReportGenerator implements ReportGenerator {
     }
 
     private String buildOutputString(MeasuredAlghorithmResult result) {
-        return "Najkrótsza trasa: " +
+        return "Algorytm: " +
+                result.getAlgorithmResult().getAlgorithmName() +
+                "Ilość wierzchołków: " +
+                result.getAlgorithmResult().getNumberOfVertices() +
+                "Najkrótsza trasa: " +
                 Arrays.toString(result.getAlgorithmResult().getBestTour()) +
                 "\n" +
                 "Długość trasy: " +
