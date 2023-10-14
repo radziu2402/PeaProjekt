@@ -4,11 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RandomDataGenerator {
-    public Matrix generateData() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Podaj liczbę miast:");
-        int numCities = scanner.nextInt();
-
+    public Matrix generateData(int numCities) {
         int[][] distanceMatrix = new int[numCities][numCities];
         Random random = new Random();
 
@@ -22,8 +18,6 @@ public class RandomDataGenerator {
             }
         }
 
-        Matrix data = new Matrix(distanceMatrix);
-        System.out.println("Dane zostały wygenerowane losowo.");
-        return data;
+        return new Matrix(distanceMatrix);
     }
 }

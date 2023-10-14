@@ -19,9 +19,6 @@ public class Menu {
     private final RandomDataGenerator dataGenerator;
     private final DataPrinter dataPrinter;
     private final Scanner scanner;
-    public static long millisActualTime;
-    public static long executionTime;
-
     public Menu() {
         scanner = new Scanner(System.in);
         this.algorithm = chooseAlgorithm();
@@ -60,27 +57,32 @@ public class Menu {
             System.out.println("5. Wyjście");
 
             int choice = scanner.nextInt();
-            switch (choice) {
-                case 1 -> matrix = fromFileReader.loadFromFile();
-                case 2 -> matrix = dataGenerator.generateData();
-                case 3 -> dataPrinter.displayData(matrix);
-                case 4 -> {
-                    try {
-                        millisActualTime = System.currentTimeMillis();
-                        AlgorithmResult result = algorithm.runAlgorithm(matrix);
-                        executionTime = System.currentTimeMillis() - millisActualTime;
-                        System.out.println("Najkrótsza trasa: " + Arrays.toString(result.getBestTour()));
-                        System.out.println("Długość trasy: " + result.getMinCost());
-                        System.out.println("Czas wykonania: " + executionTime + " ms");
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
+            MeasuredAlghorithmResult result = null;
+            AlgorithmMeasurement algorithmMeasurement = new AlgorithmMeasurement();
+            try {
+                switch (choice) {
+                    case 1 -> matrix = fromFileReader.loadFromFile();
+                    case 2 -> {
+                        Scanner scanner = new Scanner(System.in);
+                        System.out.println("Podaj liczbę miast:");
+                        matrix = dataGenerator.generateData(scanner.nextInt());
+                        System.out.println("Dane zostały wygenerowane losowo.");
                     }
+                    case 3 -> dataPrinter.displayData(matrix);
+                    case 4 -> result = algorithmMeasurement.measureAlgorithm(algorithm, matrix);
+                    case 5 -> {
+                        scanner.close();
+                        System.exit(0);
+                    }
+                    default -> System.out.println("Nieprawidłowy wybór. Wybierz ponownie.");
                 }
-                case 5 -> {
-                    scanner.close();
-                    System.exit(0);
-                }
-                default -> System.out.println("Nieprawidłowy wybór. Wybierz ponownie.");
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+            if(result != null) {
+                System.out.println("Najkrótsza trasa: " + Arrays.toString(result.getAlgorithmResult().getBestTour()));
+                System.out.println("Długość trasy: " + result.getAlgorithmResult().getMinCost());
+                System.out.println("Czas wykonania: " + result.getExecutionTime() + " ms");
             }
         }
     }
