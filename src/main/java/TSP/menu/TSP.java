@@ -12,24 +12,28 @@ public class TSP {
     private final DataProvider dataProvider;
     private final AlgorithmProvider algorithmProvider;
     private final ReportGenerator reportGenerator;
+    private final AlgorithmMeasurement algorithmMeasurement;
 
     public TSP(
             DataProvider dataProvider,
             AlgorithmProvider algorithmProvider,
-            ReportGenerator reportGenerator
+            ReportGenerator reportGenerator,
+            AlgorithmMeasurement algorithmMeasurement
     ) {
         this.dataProvider = dataProvider;
         this.algorithmProvider = algorithmProvider;
         this.reportGenerator = reportGenerator;
+        this.algorithmMeasurement = algorithmMeasurement;
     }
 
     public void run() {
         Matrix data;
         MeasuredAlghorithmResult result;
-        AlgorithmMeasurement algorithmMeasurement = new AlgorithmMeasurement();
         Algorithm algorithm;
         while ((algorithm = algorithmProvider.getAlgorithm()) != null) {
+            System.out.println("Running " + algorithm.getName());
             while ((data = dataProvider.getData()) != null) {
+                System.out.println("for number of vertices " + data.size);
                 try {
                     result = algorithmMeasurement.measureAlgorithm(algorithm, data);
                     reportGenerator.addToReport(result);

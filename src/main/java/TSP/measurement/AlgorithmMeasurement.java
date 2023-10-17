@@ -6,6 +6,12 @@ import TSP.algorithms.IncorrectDataException;
 import TSP.data.Matrix;
 
 public class AlgorithmMeasurement {
+    private final long upperTimeLimit;
+
+    public AlgorithmMeasurement(long upperTimeLimit) {
+        this.upperTimeLimit = upperTimeLimit;
+    }
+
     /**
      * Timer to be used to count time execution of an algorithm
      */
@@ -14,8 +20,11 @@ public class AlgorithmMeasurement {
     public MeasuredAlghorithmResult measureAlgorithm(Algorithm algorithm, Matrix data) throws IncorrectDataException, TimerException {
         timer.start();
         AlgorithmResult result = algorithm.runAlgorithm(data);
-        timer.stop();
 
-        return new MeasuredAlghorithmResult(result, timer.getElapsedTime());
+        return new MeasuredAlghorithmResult(
+                result,
+                timer.getElapsedTime(),
+                timer.getElapsedTime() < upperTimeLimit
+        );
     }
 }

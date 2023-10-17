@@ -8,31 +8,40 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class CSVReportGenerator implements ReportGenerator {
-    private final HashMap<Integer, Long> resultsForCsv = new HashMap<>();
-    private final HashMap<Integer, Integer> numberOfResultsForCsv = new HashMap<>();
+    private final HashMap<Integer, Long> sumExecutionTime = new HashMap<>();
+    private final HashMap<Integer, Integer> numberOfIncorrect = new HashMap<>();
+    private final HashMap<Integer, Integer> numberOfResults = new HashMap<>();
     private final ArrayList<MeasuredAlghorithmResult> results = new ArrayList<>();
 
     @Override
     public String generateReport() {
         StringBuilder report = new StringBuilder();
-        report.append("Liczba wierzchołków;Średni czas\n");
+        report.append("Liczba wierzchołków;Średni czas;% niepowodzeń\n");
         for (MeasuredAlghorithmResult result : results) {
             AlgorithmResult algorithmResult = result.getAlgorithmResult();
             int numberOfVertices = algorithmResult.getNumberOfVertices();
-            if(resultsForCsv.containsKey(numberOfVertices)) {
-                resultsForCsv.replace(numberOfVertices, resultsForCsv.get(numberOfVertices) + result.getExecutionTime());
-                numberOfResultsForCsv.replace(numberOfVertices, numberOfResultsForCsv.get(numberOfVertices) + 1);
+            if(sumExecutionTime.containsKey(numberOfVertices)) {
+                sumExecutionTime.replace(numberOfVertices, sumExecutionTime.get(numberOfVertices) + result.getExecutionTime());
+                numberOfResults.replace(numberOfVertices, numberOfResults.get(numberOfVertices) + 1);
+                numberOfIncorrect.replace(
+                        numberOfVertices,
+                        numberOfIncorrect.get(numberOfVertices) + (result.isExecutedCorrectly() ? 0 : 1)
+                );
             } else {
-                resultsForCsv.put(numberOfVertices, result.getExecutionTime());
-                numberOfResultsForCsv.put(numberOfVertices, 1);
+                sumExecutionTime.put(numberOfVertices, result.getExecutionTime());
+                numberOfResults.put(numberOfVertices, 1);
+                numberOfIncorrect.put(numberOfVertices, result.isExecutedCorrectly() ? 0 : 1);
             }
         }
 
-        for (int nOfVertices : resultsForCsv.keySet()) {
-            long result = resultsForCsv.get(nOfVertices)/numberOfResultsForCsv.get(nOfVertices);
+        for (int nOfVertices : sumExecutionTime.keySet()) {
+            long meanExecutionTime = sumExecutionTime.get(nOfVertices)/numberOfResults.get(nOfVertices);
+            float percentOfIncorrect = (float)numberOfIncorrect.get(nOfVertices)/numberOfResults.get(nOfVertices)*100;
                 report.append(nOfVertices);
                 report.append(';');
-                report.append(result);
+                report.append(meanExecutionTime);
+                report.append(';');
+                report.append(percentOfIncorrect);
                 report.append('\n');
         }
 

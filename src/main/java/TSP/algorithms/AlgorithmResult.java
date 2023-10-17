@@ -18,7 +18,7 @@ public class AlgorithmResult {
      */
     private final int numberOfVertices;
 
-    AlgorithmResult(int numberOfVertices, int[] bestTour, int minCost, String algorithmName) {
+    public AlgorithmResult(int numberOfVertices, int[] bestTour, int minCost, String algorithmName) {
         this.numberOfVertices = numberOfVertices;
         this.bestTour = bestTour;
         this.minCost = minCost;
