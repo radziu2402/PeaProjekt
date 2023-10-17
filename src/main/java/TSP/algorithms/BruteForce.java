@@ -6,7 +6,10 @@ import java.util.Arrays;
 
 public class BruteForce implements Algorithm {
 
+    private boolean run = true;
+
     public AlgorithmResult runAlgorithm(Matrix data) throws IncorrectDataException {
+        run = true;
         if (data == null) {
             throw new IncorrectDataException("Najpierw wczytaj lub wygeneruj dane.");
         } else {
@@ -25,7 +28,7 @@ public class BruteForce implements Algorithm {
                     minDistance = currentDistance;
                     bestTour = Arrays.copyOf(tour, numCities);
                 }
-            } while (nextPermutation(tour));
+            } while (run && nextPermutation(tour));
 
             return new AlgorithmResult(numCities, bestTour, minDistance, getName());
         }
@@ -34,6 +37,11 @@ public class BruteForce implements Algorithm {
     @Override
     public String getName() {
         return "Przegląd zupełny";
+    }
+
+    @Override
+    public void stopExecution() {
+        this.run = false;
     }
 
     private int calculateTourDistance(int[] tour, Matrix data, int minDistance) {

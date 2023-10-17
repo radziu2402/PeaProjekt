@@ -13,4 +13,9 @@ public interface Algorithm {
      *
      */
     String getName();
+
+    /**
+     *
+     */
+    void stopExecution();
 }
