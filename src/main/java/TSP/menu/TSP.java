@@ -31,9 +31,7 @@ public class TSP {
         MeasuredAlghorithmResult result;
         Algorithm algorithm;
         while ((algorithm = algorithmProvider.getAlgorithm()) != null) {
-            System.out.println("Running " + algorithm.getName());
             while ((data = dataProvider.getData()) != null) {
-                System.out.println("for number of vertices " + data.size);
                 try {
                     result = algorithmMeasurement.measureAlgorithm(algorithm, data);
                     reportGenerator.addToReport(result);
