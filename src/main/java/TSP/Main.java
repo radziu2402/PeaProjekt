@@ -9,6 +9,7 @@ import TSP.implementations.automated.StubAlgorithmProvider;
 import TSP.implementations.forhuman.HumanAlgorithmProvider;
 import TSP.implementations.forhuman.HumanDataProvider;
 import TSP.implementations.forhuman.HumanReadableReportGenerator;
+import TSP.measurement.AlgorithmMeasurement;
 import TSP.menu.TSP;
 import TSP.utils.ReportGenerator;
 
@@ -25,7 +26,8 @@ public class Main {
         TSP tsp = new TSP(
                 new HumanDataProvider(),
                 new HumanAlgorithmProvider(),
-                reportGenerator
+                reportGenerator,
+                new AlgorithmMeasurement(10000)
         );
         tsp.run();
         new ToFileWriter("report.log").write(reportGenerator.generateReport());
@@ -44,7 +46,8 @@ public class Main {
                         12,12,12,12,12,12,12,12,12,12
                 }),
                 new StubAlgorithmProvider(algorithms),
-                reportGenerator
+                reportGenerator,
+                new AlgorithmMeasurement(10000)
         );
         tsp.run();
         new ToFileWriter("report.csv").write(reportGenerator.generateReport());
