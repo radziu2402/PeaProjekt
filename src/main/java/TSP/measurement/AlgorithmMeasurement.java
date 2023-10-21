@@ -19,7 +19,17 @@ public class AlgorithmMeasurement {
 
     public MeasuredAlghorithmResult measureAlgorithm(Algorithm algorithm, Matrix data) throws IncorrectDataException, TimerException {
         timer.start();
+        Thread t = new Thread(() -> {
+            try {
+                Thread.sleep(upperTimeLimit);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            algorithm.stopExecution();
+        });
+        t.start();
         AlgorithmResult result = algorithm.runAlgorithm(data);
+        t.stop();
 
         return new MeasuredAlghorithmResult(
                 result,

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Main.doHuman();
+        Main.doAutomated();
     }
 
     public static void doHuman() throws IOException {
@@ -27,7 +27,7 @@ public class Main {
                 new HumanDataProvider(),
                 new HumanAlgorithmProvider(),
                 reportGenerator,
-                new AlgorithmMeasurement(10000)
+                new AlgorithmMeasurement(2*60*1000)
         );
         tsp.run();
         new ToFileWriter("report.log").write(reportGenerator.generateReport());
@@ -39,15 +39,17 @@ public class Main {
         algorithms.add(new BruteForce());
         TSP tsp = new TSP(
                 new RandomDataProvider(new int[]{
-                        8,8,8,8,8,8,8,8,8,8,
-                        9,9,9,9,9,9,9,9,9,9,
-                        10,10,10,10,10,10,10,10,10,10,
-                        11,11,11,11,11,11,11,11,11,11,
-                        12,12,12,12,12,12,12,12,12,12
+                        8,8,8,8,8,
+                        9,9,9,9,9,
+                        10,10,10,10,10,
+                        11,11,11,11,11,
+                        12,12,12,12,12,
+                        13,13,13,13,13,
+                        14,14,14,14,14
                 }),
                 new StubAlgorithmProvider(algorithms),
                 reportGenerator,
-                new AlgorithmMeasurement(10000)
+                new AlgorithmMeasurement(2*60*1000)
         );
         tsp.run();
         new ToFileWriter("report.csv").write(reportGenerator.generateReport());
