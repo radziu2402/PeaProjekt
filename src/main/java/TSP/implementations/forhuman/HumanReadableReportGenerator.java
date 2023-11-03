@@ -31,7 +31,9 @@ public class HumanReadableReportGenerator implements ReportGenerator {
                     (result.getExecutionTime() / 1000) +
                     "s";
         }
-
+        int[] bestTour = result.getAlgorithmResult().getBestTour();
+        int[] modifiedTour = Arrays.copyOf(bestTour, bestTour.length + 1);
+        modifiedTour[bestTour.length] = 0;
         return "Algorytm: " +
                 result.getAlgorithmResult().getAlgorithmName() +
                 "\n" +
@@ -39,7 +41,7 @@ public class HumanReadableReportGenerator implements ReportGenerator {
                 result.getAlgorithmResult().getNumberOfVertices() +
                 "\n" +
                 "Najkrótsza trasa: " +
-                Arrays.toString(result.getAlgorithmResult().getBestTour()) +
+                Arrays.toString(modifiedTour) +
                 "\n" +
                 "Długość trasy: " +
                 result.getAlgorithmResult().getMinCost() +

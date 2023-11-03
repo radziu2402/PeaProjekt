@@ -1,11 +1,10 @@
-package TSP.algorithms.BranchAndBound;
+package TSP.algorithms;
 
-import TSP.algorithms.Algorithm;
-import TSP.algorithms.AlgorithmResult;
-import TSP.algorithms.IncorrectDataException;
 import TSP.data.Matrix;
 
-public class BranchAndBound implements Algorithm {
+
+public class DynamicProgramming implements Algorithm {
+
     @Override
     public AlgorithmResult runAlgorithm(Matrix matrix) throws IncorrectDataException {
         return null;
@@ -13,7 +12,7 @@ public class BranchAndBound implements Algorithm {
 
     @Override
     public String getName() {
-        return "Branch and bound";
+        return "Dynamic programming";
     }
 
     @Override
