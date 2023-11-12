@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Main.doAutomated();
+        Main.doHuman();
     }
 
     public static void doHuman() throws IOException {
@@ -29,7 +29,7 @@ public class Main {
                 new HumanDataProvider(),
                 new HumanAlgorithmProvider(),
                 reportGenerator,
-                new AlgorithmMeasurement(60*1000)
+                new AlgorithmMeasurement(60*10000000)
         );
         tsp.run();
         new ToFileWriter("report.log").write(reportGenerator.generateReport());
@@ -38,7 +38,7 @@ public class Main {
     public static void doAutomated() throws IOException {
         ReportGenerator reportGenerator = new CSVReportGenerator();
         ArrayList<Algorithm> algorithms = new ArrayList<>();
-        algorithms.add(new DynamicProgramming());
+        algorithms.add(new BranchAndBound());
         TSP tsp = new TSP(
                 new RandomDataProvider(new int[]{
                         5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
@@ -50,10 +50,22 @@ public class Main {
                         23, 23, 23, 23, 23, 23, 23, 23, 23, 23,
                         24, 24, 24, 24, 24, 24, 24, 24, 24, 24,
                         25, 25, 25, 25, 25, 25, 25, 25, 25, 25,
+                        27, 27, 27, 27, 27, 27, 27, 27, 27, 27,
+                        29, 29, 29, 29, 29, 29, 29, 29, 29, 29,
+                        31, 31, 31, 31, 31, 31, 31, 31, 31, 31,
+                        33, 33, 33, 33, 33, 33, 33, 33, 33, 33,
+                        35, 35, 35, 35, 35, 35, 35, 35, 35, 35,
+                        37, 37, 37, 37, 37, 37, 37, 37, 37, 37,
+                        39, 39, 39, 39, 39, 39, 39, 39, 39, 39,
+                        41, 41, 41, 41, 41, 41, 41, 41, 41, 41,
+                        42, 42, 42, 42, 42, 42, 42, 42, 42, 42,
+                        43, 43, 43, 43, 43, 43, 43, 43, 43, 43,
+                        44, 44, 44, 44, 44, 44, 44, 44, 44, 44,
+                        45, 45, 45, 45, 45, 45, 45, 45, 45, 45
                 }),
                 new StubAlgorithmProvider(algorithms),
                 reportGenerator,
-                new AlgorithmMeasurement(60*1000)
+                new AlgorithmMeasurement(4*60*1000)
         );
         tsp.run();
         new ToFileWriter("report.csv").write(reportGenerator.generateReport());
