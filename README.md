@@ -1,10 +1,12 @@
 # Projektowanie Efektywnych Algorytmów - Projekt
 
-Projekt podzielony został na etapy, o które będzie sukcesywnie rozbudowywany.
-
-Etap nr. 1
+Etap nr. 1a
 - Brute Force
 
+Etap nr. 1b
+- Branch and Bound
+- Dynamic Programming
+  
 Program udostępnia następujące opcje:
 1. Wczytanie danych z pliku
 2. Wygenerowanie danych losowych
